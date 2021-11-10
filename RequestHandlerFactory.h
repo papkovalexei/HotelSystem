@@ -1,5 +1,5 @@
-#ifndef H_SERVER_APP
-#define H_SERVER_APP
+#ifndef H_REQUEST_FACTORY
+#define H_REQUEST_FACTORY
 
 #include <Poco/Net/ServerSocket.h>
 #include <Poco/Net/HTTPServer.h>
@@ -18,13 +18,14 @@ using namespace Poco::Net;
 using namespace Poco::Util;
 using namespace std;
 
-#include "RequestHandlerFactory.h"
+#include "POSTRequestHandler.h"
+#include "GETRequestHandler.h"
 
-using namespace Poco::Util;
+using namespace Poco::Net;
 
-class MyServerApp : public ServerApplication {
-protected:
-    int main(const std::vector<std::string> &args);
+class RequestHandlerFactory : public HTTPRequestHandlerFactory {
+public:
+    virtual HTTPRequestHandler* createRequestHandler(const HTTPServerRequest &req);
 };
 
 #endif
