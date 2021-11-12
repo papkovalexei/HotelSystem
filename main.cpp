@@ -1,4 +1,5 @@
 #include "ServerApp.h"
+#include "Hotel.h"
 
 int main(int argc, char** argv)
 {
